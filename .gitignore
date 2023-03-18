@@ -1,0 +1,12 @@
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+bin/
+bin-int/
+Makefile
+.vscode/
+libiconv2.dll
+libintl3.dll
+make.exe

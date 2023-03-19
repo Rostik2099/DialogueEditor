@@ -3,7 +3,6 @@
 ProgressQuest::ProgressQuest() 
 {
 	memset(buffer, 0 , 255);
-	pins = 2;
 }
 
 void ProgressQuest::Draw()
@@ -15,14 +14,12 @@ void ProgressQuest::Draw()
 	ImGui::Text("Progress Quest");
 	ImNodes::EndNodeTitleBar();
 
-	inputID = ID + 1;
 	ImNodes::BeginInputAttribute(inputID);
 	ImGui::Text("Input");
 	ImGui::SetCursorPos(ImVec2(100.f, 30.f));
 	ImNodes::EndInputAttribute();
 	ImGui::SameLine();
 
-	outputID = ID + 2;
 	ImNodes::BeginOutputAttribute(outputID);
 	ImGui::Text("Output");
 	ImNodes::EndOutputAttribute();
@@ -31,6 +28,14 @@ void ProgressQuest::Draw()
 	ImGui::InputText("Task ID", buffer, sizeof(buffer));
 
 	ImNodes::EndNode();
+}
+
+void ProgressQuest::SetParams(ImVec2 pos, int& ID)
+{
+	pins = 2;
+	Node::SetParams(pos, ID);
+	inputID = ID + 1;
+	outputID = ID + 2;
 }
 
 ProgressQuest::~ProgressQuest() {}

@@ -7,6 +7,13 @@ NodesSelector::NodesSelector(DialogueEditor* editor, ImVec2 dropPos)
 	this->dropPos = dropPos;
 }
 
+NodesSelector::NodesSelector(DialogueEditor* editor, ImVec2 dropPos, int dropID)
+{
+	this->editor = editor;
+	this->dropPos = dropPos;
+	this->dropID = dropID;
+}
+
 void NodesSelector::Draw()
 {
 	if (justCreated)
@@ -30,7 +37,7 @@ void NodesSelector::ShowNodes()
 	{
 		if (ImGui::Button(node.first.c_str()))
 		{
-			editor->SpawnNode(node.second);
+			editor->SpawnNode(node.second, dropID);
 			editor->DestroyNodeSelector();
 			return;
 		}

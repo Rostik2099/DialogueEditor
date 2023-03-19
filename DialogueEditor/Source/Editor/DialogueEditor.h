@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <iostream>
 
 #include "imnodes.h"
 #include "imgui.h"
@@ -18,17 +19,35 @@ public:
 
 	void Draw();
 	void DestroyNodeSelector();
-	void SpawnNode(NodeType nodeType);
+	void SpawnNode(NodeType nodeType, int dropID);
 	void DeleteNodes();
 	void OpenNodeSelector();
+	void OpenNodeSelector(int dropID);
 	bool HasMouseHover() { return this->isHovered; };
+	Node* GetNodeByPin(int pinID);
 
 private:
 	template<typename Class>
-	void CreateNewNode()
+	void CreateNewNode(int dropID)
 	{
 		Node* newNode = new Class;
 		newNode->SetParams(selector->GetDropPos(), nextID);
+		int in, out;
+		newNode->GetIOid(in, out);
+		if (dropID != -1)
+		{
+			Node* dropNode = GetNodeByPin(dropID);
+			int din, dout;
+			dropNode->GetIOid(din, dout);
+			if (din == dropID && out != -1)
+			{
+				this->links.push_back(std::make_pair(dropID, out));
+			}
+			else if (dout == dropID && in != -1)
+			{
+				this->links.push_back(std::make_pair(dropID, in));
+			}
+		}
 		nodes.push_back(newNode);
 	};
 

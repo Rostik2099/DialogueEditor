@@ -23,6 +23,7 @@ class NodesSelector
 {
 public:
 	NodesSelector(DialogueEditor* editor, ImVec2 dropPos);
+	NodesSelector(DialogueEditor* editor, ImVec2 dropPos, int dropID);
 	~NodesSelector();
 
 	void Draw();
@@ -35,6 +36,7 @@ private:
 	DialogueEditor* editor;
 	bool justCreated = true;
 	ImVec2 dropPos;
+	int dropID = -1;
 	std::vector<int> bebra;
 	std::vector<std::pair<std::string, NodeType>> nodesList =
 	{

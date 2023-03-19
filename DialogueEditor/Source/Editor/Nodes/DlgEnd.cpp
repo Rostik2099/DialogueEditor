@@ -1,8 +1,5 @@
 #include "DlgEnd.h"
-DlgEnd::DlgEnd()
-{
-	pins = 1;
-}
+DlgEnd::DlgEnd() {}
 
 void DlgEnd::Draw()
 {
@@ -13,12 +10,19 @@ void DlgEnd::Draw()
 	ImGui::Text("End");
 	ImNodes::EndNodeTitleBar();
 
-	inputID = ID + 1;
 	ImNodes::BeginInputAttribute(inputID);
 	ImGui::Text("Input");
 	ImNodes::EndInputAttribute();
 
 	ImNodes::EndNode();
+}
+
+void DlgEnd::SetParams(ImVec2 pos, int& ID)
+{
+	pins = 1;
+	Node::SetParams(pos, ID);
+	inputID = ID + 1;
+	outputID = ID + 2;
 }
 
 DlgEnd::~DlgEnd() {}

@@ -39,7 +39,7 @@ void DialogueEditor::Draw()
 	int dropID;
 	if (ImNodes::IsLinkDropped(&dropID))
 	{
-		OpenNodeSelector();
+		OpenNodeSelector(dropID);
 	}
 
 	if (selector)
@@ -54,33 +54,33 @@ void DialogueEditor::DestroyNodeSelector()
 	selector = nullptr;
 }
 
-void DialogueEditor::SpawnNode(NodeType nodeType)
+void DialogueEditor::SpawnNode(NodeType nodeType, int dropID)
 {
 	switch (nodeType)
 	{
 	case Start:
-		CreateNewNode<DlgStart>();
+		CreateNewNode<DlgStart>(dropID);
 		break;
 	case End:
-		CreateNewNode<DlgEnd>();
+		CreateNewNode<DlgEnd>(dropID);
 		break;
 	case ProgrQst:
-		CreateNewNode<ProgressQuest>();
+		CreateNewNode<ProgressQuest>(dropID);
 		break;
 	case GiveQst:
-		CreateNewNode<GiveQuest>();
+		CreateNewNode<GiveQuest>(dropID);
 		break;
 	case GiveItm:
-		CreateNewNode<GiveItem>();
+		CreateNewNode<GiveItem>(dropID);
 		break;
 	case NPCAnsw:
-		CreateNewNode<NPCAnswer>();
+		CreateNewNode<NPCAnswer>(dropID);
 		break;
 	case DlgChange:
-		CreateNewNode<ChangeDialogue>();
+		CreateNewNode<ChangeDialogue>(dropID);
 		break;
 	case GiveMny:
-		CreateNewNode<GiveMoney>();
+		CreateNewNode<GiveMoney>(dropID);
 		break;
 	}
 }
@@ -130,6 +130,26 @@ void DialogueEditor::OpenNodeSelector()
 {
 	if (HasMouseHover())
 		selector = new NodesSelector(this, ImGui::GetMousePos());
+}
+
+void DialogueEditor::OpenNodeSelector(int dropID)
+{
+	if (HasMouseHover())
+		selector = new NodesSelector(this, ImGui::GetMousePos(), dropID);
+}
+
+Node* DialogueEditor::GetNodeByPin(int pinID)
+{
+	for (auto node : nodes)
+	{
+		int in, out;
+		node->GetIOid(in, out);
+		if (pinID == in || pinID == out)
+		{
+			return node;
+		}
+	}
+	return nullptr;
 }
 
 DialogueEditor::~DialogueEditor() {}

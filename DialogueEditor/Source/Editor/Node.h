@@ -11,7 +11,7 @@ public:
 	Node() {};
 	~Node() {};
 
-	void SetParams(ImVec2 startPos, int& newID) 
+	virtual void SetParams(ImVec2 startPos, int& newID) 
 	{
 		this->startPos = startPos;
 		this->ID = newID;

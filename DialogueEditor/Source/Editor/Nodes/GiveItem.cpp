@@ -4,7 +4,6 @@ GiveItem::GiveItem()
 {
 	memset(idBuffer, 0, 255);
 	memset(quantBuffer, 0, 255);
-	pins = 2;
 }
 
 void GiveItem::Draw()
@@ -16,14 +15,12 @@ void GiveItem::Draw()
 	ImGui::Text("Give Item");
 	ImNodes::EndNodeTitleBar();
 
-	inputID = ID + 1;
 	ImNodes::BeginInputAttribute(inputID);
 	ImGui::Text("Input");
 	ImGui::SetCursorPos(ImVec2(100.f, 30.f));
 	ImNodes::EndInputAttribute();
 	ImGui::SameLine();
 
-	outputID = ID + 2;
 	ImNodes::BeginOutputAttribute(outputID);
 	ImGui::Text("Output");
 	ImNodes::EndOutputAttribute();
@@ -35,6 +32,14 @@ void GiveItem::Draw()
 	ImGui::InputText("Quantity", quantBuffer, sizeof(quantBuffer));
 
 	ImNodes::EndNode();
+}
+
+void GiveItem::SetParams(ImVec2 pos, int& ID)
+{
+	pins = 2;
+	Node::SetParams(pos, ID);
+	inputID = ID + 1;
+	outputID = ID + 2;
 }
 
 GiveItem::~GiveItem() {}

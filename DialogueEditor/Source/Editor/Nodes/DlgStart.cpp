@@ -1,9 +1,6 @@
 #include "DlgStart.h"
 
-DlgStart::DlgStart() 
-{
-	pins = 1;
-}
+DlgStart::DlgStart() {}
 
 void DlgStart::Draw()
 {
@@ -14,12 +11,19 @@ void DlgStart::Draw()
 	ImGui::Text("Start");
 	ImNodes::EndNodeTitleBar();
 
-	outputID = ID + 1;
 	ImNodes::BeginOutputAttribute(outputID);
 	ImGui::Text("Output");
 	ImNodes::EndOutputAttribute();
 
 	ImNodes::EndNode();
+}
+
+void DlgStart::SetParams(ImVec2 pos, int& ID)
+{
+	pins = 1;
+	Node::SetParams(pos, ID);
+	inputID = ID + 1;
+	outputID = ID + 2;
 }
 
 DlgStart::~DlgStart() {}

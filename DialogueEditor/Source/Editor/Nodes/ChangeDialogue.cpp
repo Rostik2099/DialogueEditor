@@ -3,7 +3,6 @@
 ChangeDialogue::ChangeDialogue()
 {
 	memset(buffer, 0, 255);
-	pins = 2;
 }
 
 void ChangeDialogue::Draw()
@@ -15,14 +14,12 @@ void ChangeDialogue::Draw()
 	ImGui::Text("Change Dialogue");
 	ImNodes::EndNodeTitleBar();
 
-	inputID = ID + 1;
 	ImNodes::BeginInputAttribute(inputID);
 	ImGui::Text("Input");
 	ImGui::SetCursorPos(ImVec2(100.f, 30.f));
 	ImNodes::EndInputAttribute();
 	ImGui::SameLine();
 
-	outputID = ID + 2;
 	ImNodes::BeginOutputAttribute(outputID);
 	ImGui::Text("Output");
 	ImNodes::EndOutputAttribute();
@@ -31,6 +28,14 @@ void ChangeDialogue::Draw()
 	ImGui::InputText("Dialogue Name", buffer, sizeof(buffer));
 
 	ImNodes::EndNode();
+}
+
+void ChangeDialogue::SetParams(ImVec2 pos, int& ID)
+{
+	pins = 2;
+	Node::SetParams(pos, ID);
+	inputID = ID + 1;
+	outputID = ID + 2;
 }
 
 ChangeDialogue::~ChangeDialogue() {}

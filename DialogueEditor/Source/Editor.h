@@ -6,8 +6,9 @@
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
-
 #include "glfw3.h"
+
+#include "DialogueEditor.h"
 
 class Editor
 {
@@ -21,5 +22,6 @@ public:
 
 private:
 	GLFWwindow* appWindow;
+	DialogueEditor* editor;
 };
 

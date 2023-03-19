@@ -25,6 +25,8 @@ void Editor::CreateWindow(std::string title)
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(appWindow, true);
 	ImGui_ImplOpenGL3_Init("#version 330");
+
+	editor = new DialogueEditor;
 }
 
 bool Editor::AppWindowShouldClose()
@@ -45,36 +47,9 @@ void Editor::Draw()
 	ImGui_ImplGlfw_NewFrame();
 	ImGui::NewFrame();
 
-	ImGui::Begin("Dialogue Editor");
-
-	ImNodes::BeginNodeEditor();
-
-	const int hardcodenode = 1;
-	ImNodes::BeginNode(hardcodenode);
-	ImNodes::BeginNodeTitleBar();
-	ImGui::Text("Start");
-	ImNodes::EndNodeTitleBar();
-	ImNodes::BeginOutputAttribute(2);
-	ImGui::Text("Output");
-	ImNodes::EndOutputAttribute();
-	ImNodes::EndNode();
-
-	const int hardcode2 = 3;
-	ImNodes::BeginNode(hardcode2);
-	ImNodes::BeginNodeTitleBar();
-	ImGui::Text("End");
-	ImNodes::EndNodeTitleBar();
-	ImNodes::BeginInputAttribute(4);
-	ImGui::Text("Input");
-	ImNodes::EndInputAttribute();
-	ImNodes::EndNode();
-
-	ImNodes::Link(0, 2, 4);
-	ImNodes::MiniMap(0.2f, ImNodesMiniMapLocation_BottomLeft);
-
-	ImNodes::EndNodeEditor();
+	this->editor->Draw();
+	
 	ImGui::End();
-
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 

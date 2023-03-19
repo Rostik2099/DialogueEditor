@@ -13,6 +13,9 @@ enum NodeType
 	ProgrQst,
 	GiveQst,
 	GiveItm,
+	NPCAnsw,
+	DlgChange,
+	GiveMny,
 };
 
 class DialogueEditor;
@@ -40,6 +43,9 @@ private:
 		std::make_pair("Progress Quest", ProgrQst),
 		std::make_pair("Give New Quest", GiveQst),
 		std::make_pair("Give Item", GiveItm),
+		std::make_pair("NPC Answer", NPCAnsw),
+		std::make_pair("Change Dialogue", DlgChange),
+		std::make_pair("Give Money", GiveMny),
 	};
 };
 

@@ -30,4 +30,11 @@ void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
 	{
 		editor->GetDlgEditor()->OpenNodeSelector();
 	}
+	if (button == GLFW_MOUSE_BUTTON_MIDDLE && action == GLFW_PRESS)
+	{
+		if (editor->GetDlgEditor()->HasMouseHover())
+		{
+			editor->GetDlgEditor()->DestroyNodeSelector();
+		}
+	}
 }	

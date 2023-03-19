@@ -1,18 +1,18 @@
-#include "ProgressQuest.h"
+#include "GiveMoney.h"
 
-ProgressQuest::ProgressQuest() 
+GiveMoney::GiveMoney()
 {
-	memset(buffer, 0 , 255);
+	memset(buffer, 0, 255);
 	pins = 2;
 }
 
-void ProgressQuest::Draw()
+void GiveMoney::Draw()
 {
 	Node::Draw();
 	ImNodes::BeginNode(ID);
 
 	ImNodes::BeginNodeTitleBar();
-	ImGui::Text("Progress Quest");
+	ImGui::Text("Give Money");
 	ImNodes::EndNodeTitleBar();
 
 	inputID = ID + 1;
@@ -28,10 +28,9 @@ void ProgressQuest::Draw()
 	ImNodes::EndOutputAttribute();
 
 	ImGui::SetNextItemWidth(100.f);
-	ImGui::InputText("Task ID", buffer, sizeof(buffer));
+	ImGui::InputText("Ammount", buffer, sizeof(buffer));
 
 	ImNodes::EndNode();
 }
 
-ProgressQuest::~ProgressQuest() {}
-
+GiveMoney::~GiveMoney() {}

@@ -5,6 +5,9 @@
 #include "Nodes/ProgressQuest.h"
 #include "Nodes/GiveQuest.h"
 #include "Nodes/GiveItem.h"
+#include "Nodes/NPCAnswer.h"
+#include "Nodes/ChangeDialogue.h"
+#include "Nodes/GiveMoney.h"
 
 DialogueEditor::DialogueEditor() {}
 
@@ -69,6 +72,15 @@ void DialogueEditor::SpawnNode(NodeType nodeType)
 		break;
 	case GiveItm:
 		CreateNewNode<GiveItem>();
+		break;
+	case NPCAnsw:
+		CreateNewNode<NPCAnswer>();
+		break;
+	case DlgChange:
+		CreateNewNode<ChangeDialogue>();
+		break;
+	case GiveMny:
+		CreateNewNode<GiveMoney>();
 		break;
 	}
 }

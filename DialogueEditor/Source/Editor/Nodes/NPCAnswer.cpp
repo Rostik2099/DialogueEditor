@@ -1,18 +1,18 @@
-#include "ProgressQuest.h"
+#include "NPCAnswer.h"
 
-ProgressQuest::ProgressQuest() 
+NPCAnswer::NPCAnswer() 
 {
-	memset(buffer, 0 , 255);
+	memset(buffer, 0, 255);
 	pins = 2;
 }
 
-void ProgressQuest::Draw()
+void NPCAnswer::Draw()
 {
 	Node::Draw();
 	ImNodes::BeginNode(ID);
 
 	ImNodes::BeginNodeTitleBar();
-	ImGui::Text("Progress Quest");
+	ImGui::Text("NPC Answer");
 	ImNodes::EndNodeTitleBar();
 
 	inputID = ID + 1;
@@ -28,10 +28,10 @@ void ProgressQuest::Draw()
 	ImNodes::EndOutputAttribute();
 
 	ImGui::SetNextItemWidth(100.f);
-	ImGui::InputText("Task ID", buffer, sizeof(buffer));
+	ImGui::InputText("Text", buffer, sizeof(buffer));
 
 	ImNodes::EndNode();
 }
 
-ProgressQuest::~ProgressQuest() {}
 
+NPCAnswer::~NPCAnswer() {}

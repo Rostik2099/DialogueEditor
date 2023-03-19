@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Nodes/DlgStart.h"
 #include "Nodes/DlgEnd.h"
+#include "Nodes/ProgressQuest.h"
 
 DialogueEditor::DialogueEditor()
 { 
@@ -31,7 +32,7 @@ void DialogueEditor::Draw()
 		ImNodes::Link(i, links[i].first, links[i].second);
 	}
 
-	ImNodes::MiniMap(0.2f, ImNodesMiniMapLocation_BottomLeft);
+	ImNodes::MiniMap(0.2f, ImNodesMiniMapLocation_BottomRight);
 
 	ImNodes::EndNodeEditor();
 
@@ -44,7 +45,7 @@ void DialogueEditor::Draw()
 	int dropID;
 	if (ImNodes::IsLinkDropped(&dropID))
 	{
-		selector = new NodesSelector(this);
+		selector = new NodesSelector(this, ImGui::GetMousePos());
 	}
 
 	if (selector)
@@ -68,6 +69,9 @@ void DialogueEditor::SpawnNode(NodeType nodeType)
 		break;
 	case End:
 		CreateNewNode<DlgEnd>();
+		break;
+	case ProgrQst:
+		CreateNewNode<ProgressQuest>();
 		break;
 	}
 }

@@ -3,6 +3,7 @@ DlgStart::DlgStart() {}
 
 void DlgStart::Draw(int& nodeID)
 {
+	Node::Draw(nodeID);
 	ImNodes::BeginNode(nodeID);
 
 	ImNodes::BeginNodeTitleBar();

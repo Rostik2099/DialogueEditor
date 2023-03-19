@@ -11,6 +11,19 @@ public:
 	Node() {};
 	~Node() {};
 
-	virtual	void Draw(int& nodeID) {};
+	void SetStartPos(ImVec2 startPos) { this->startPos = startPos; };
+
+	virtual	void Draw(int& nodeID) 
+	{
+		if (justCreated)
+		{
+			ImNodes::SetNodeScreenSpacePos(nodeID, startPos);
+			justCreated = false;
+		}
+	};
+
+private:
+	bool justCreated = true;
+	ImVec2 startPos;
 };
 

@@ -25,6 +25,7 @@ private:
 	void CreateNewNode()
 	{
 		Node* newNode = new Class;
+		newNode->SetStartPos(selector->GetDropPos());
 		nodes.push_back(newNode);
 	};
 

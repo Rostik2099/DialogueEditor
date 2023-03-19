@@ -11,7 +11,24 @@ project "DialogueEditor"
 		"Source/**.h",
 		"Source/**.cpp",
 	}
+
+	includedirs 
+	{
+		"ThirdParty/include/GLFW",
+		"Source"
+	}
 	
+	libdirs
+	{
+		"ThirdParty/lib/GLFW/"
+	}
+	
+	links
+	{
+		"glfw3.lib",
+		"opengl32.lib"	
+	}
+
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"

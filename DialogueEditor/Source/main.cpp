@@ -1,6 +1,15 @@
 #include <iostream>
+#include "Editor.h"
 
 int main()
 {
-	std::cout << "Cool dialogue editor! WOW!" << std::endl;
+	Editor Editor;
+	Editor.CreateWindow("Cotico Dialogue");
+
+	while (!Editor.AppWindowShouldClose())
+	{
+		glfwPollEvents();
+	}
+	
+	return 0;
 }

@@ -8,6 +8,7 @@ int main()
 
 	while (!Editor.AppWindowShouldClose())
 	{
+		Editor.Draw();
 		glfwPollEvents();
 	}
 	

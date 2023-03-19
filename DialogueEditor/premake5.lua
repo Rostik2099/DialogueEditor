@@ -10,11 +10,18 @@ project "DialogueEditor"
 	{
 		"Source/**.h",
 		"Source/**.cpp",
+		"ThirdParty/include/ImGUI/**.cpp",
+		"ThirdParty/include/ImGUI/**.h",
+		"ThirdParty/include/ImNodes/**.cpp",
+		"ThirdParty/include/ImNodes/**.h"
 	}
 
 	includedirs 
 	{
+		"ThirdParty/include",
 		"ThirdParty/include/GLFW",
+		"ThirdParty/include/ImGUI",
+		"ThirdParty/include/ImNodes",
 		"Source"
 	}
 	

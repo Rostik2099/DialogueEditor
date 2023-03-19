@@ -3,28 +3,19 @@
 #include "Nodes/DlgStart.h"
 #include "Nodes/DlgEnd.h"
 #include "Nodes/ProgressQuest.h"
+#include "Nodes/GiveQuest.h"
+#include "Nodes/GiveItem.h"
 
-DialogueEditor::DialogueEditor()
-{ 
-	DlgStart* dlgStart = new DlgStart;
-	DlgEnd* dlgEnd = new DlgEnd;
-	DlgStart* dlgStart2 = new DlgStart;
-
-	this->nodes.push_back(dlgStart);
-	this->nodes.push_back(dlgEnd);
-	this->nodes.push_back(dlgStart2);
-}
+DialogueEditor::DialogueEditor() {}
 
 void DialogueEditor::Draw()
 {
-	int nodeID = 1;
 	ImGui::Begin("Dialogue Editor");
 	ImNodes::BeginNodeEditor();
 
 	for (auto node : nodes)
 	{
-		node->Draw(nodeID);
-		nodeID++;
+		node->Draw();
 	}
 
 	for (int i = 0; i < links.size(); i++)
@@ -45,7 +36,7 @@ void DialogueEditor::Draw()
 	int dropID;
 	if (ImNodes::IsLinkDropped(&dropID))
 	{
-		selector = new NodesSelector(this, ImGui::GetMousePos());
+		OpenNodeSelector();
 	}
 
 	if (selector)
@@ -73,7 +64,50 @@ void DialogueEditor::SpawnNode(NodeType nodeType)
 	case ProgrQst:
 		CreateNewNode<ProgressQuest>();
 		break;
+	case GiveQst:
+		CreateNewNode<GiveQuest>();
+		break;
+	case GiveItm:
+		CreateNewNode<GiveItem>();
+		break;
 	}
+}
+
+void DialogueEditor::DeleteNodes()
+{
+	const int nodesNum = ImNodes::NumSelectedNodes();
+	if (nodesNum != 0)
+	{
+		std::vector<int> nodesToDelete;
+		nodesToDelete.resize(nodesNum);
+		ImNodes::GetSelectedNodes(nodesToDelete.data());
+		for (int i = 0; i < nodes.size(); i++)
+		{
+			for (int n = 0; n < nodesToDelete.size(); n ++)
+			{
+				if (nodes[i]->GetID() == nodesToDelete[n])
+				{
+					int inID, outID;
+					nodes[i]->GetIOid(inID, outID);
+					for (int l = 0; l < links.size(); l++)
+					{
+						if (links[l].first == inID || links[l].first == outID || links[l].second == inID || links[l].second == outID)
+						{
+							links.erase(links.begin() + l, links.begin() + l + 1);
+						}
+					}
+					nodesToDelete.erase(nodesToDelete.begin() + n, nodesToDelete.begin() + n + 1);
+					delete nodes[i];
+					nodes.erase(nodes.begin() + i, nodes.begin() + i + 1);
+				}
+			}
+		}
+	}
+}
+
+void DialogueEditor::OpenNodeSelector()
+{
+	selector = new NodesSelector(this, ImGui::GetMousePos());
 }
 
 DialogueEditor::~DialogueEditor() {}

@@ -14,7 +14,7 @@ void NodesSelector::Draw()
 		ImGui::SetNextWindowPos(ImGui::GetMousePos());
 		justCreated = false;
 	}
-	ImGui::SetNextWindowSize(ImVec2(200.f, 100.f));
+	ImGui::SetNextWindowSize(ImVec2(250.f, 150.f));
 	ImGui::Begin("Create Node", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings);
 	ShowNodes();
 	if (!ImGui::IsWindowFocused())

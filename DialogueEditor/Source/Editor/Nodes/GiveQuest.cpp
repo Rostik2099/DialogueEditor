@@ -1,19 +1,18 @@
-#include "ProgressQuest.h"
-#include <iostream>
+#include "GiveQuest.h"
 
-ProgressQuest::ProgressQuest() 
+GiveQuest::GiveQuest() 
 {
-	memset(buffer, 0 , 255);
+	memset(buffer, 0, 255);
 	pins = 2;
 }
 
-void ProgressQuest::Draw()
+void GiveQuest::Draw()
 {
 	Node::Draw();
 	ImNodes::BeginNode(ID);
 
 	ImNodes::BeginNodeTitleBar();
-	ImGui::Text("Progress Quest");
+	ImGui::Text("Give New Quest");
 	ImNodes::EndNodeTitleBar();
 
 	inputID = ID + 1;
@@ -29,10 +28,9 @@ void ProgressQuest::Draw()
 	ImNodes::EndOutputAttribute();
 
 	ImGui::SetNextItemWidth(100.f);
-	ImGui::InputText("Task ID", buffer, sizeof(buffer));
+	ImGui::InputText("Quest ID", buffer, sizeof(buffer));
 
 	ImNodes::EndNode();
 }
 
-ProgressQuest::~ProgressQuest() {}
-
+GiveQuest::~GiveQuest() {}

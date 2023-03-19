@@ -27,6 +27,7 @@ void Editor::CreateWindow(std::string title)
 	ImGui_ImplOpenGL3_Init("#version 330");
 
 	editor = new DialogueEditor;
+	inpMng = new InputManager(appWindow, this);
 }
 
 bool Editor::AppWindowShouldClose()

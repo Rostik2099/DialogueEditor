@@ -11,6 +11,8 @@ enum NodeType
 	Start,
 	End,
 	ProgrQst,
+	GiveQst,
+	GiveItm,
 };
 
 class DialogueEditor;
@@ -36,6 +38,8 @@ private:
 		std::make_pair("Dialogue Start", Start),
 		std::make_pair("Dialogue End", End),
 		std::make_pair("Progress Quest", ProgrQst),
+		std::make_pair("Give New Quest", GiveQst),
+		std::make_pair("Give Item", GiveItm),
 	};
 };
 

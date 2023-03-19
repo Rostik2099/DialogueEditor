@@ -1,17 +1,20 @@
 #include "DlgEnd.h"
-DlgEnd::DlgEnd() {}
-
-void DlgEnd::Draw(int& nodeID)
+DlgEnd::DlgEnd()
 {
-	Node::Draw(nodeID);
-	ImNodes::BeginNode(nodeID);
+	pins = 1;
+}
+
+void DlgEnd::Draw()
+{
+	Node::Draw();
+	ImNodes::BeginNode(ID);
 
 	ImNodes::BeginNodeTitleBar();
 	ImGui::Text("End");
 	ImNodes::EndNodeTitleBar();
 
-	nodeID++;
-	ImNodes::BeginInputAttribute(nodeID);
+	inputID = ID + 1;
+	ImNodes::BeginInputAttribute(inputID);
 	ImGui::Text("Input");
 	ImNodes::EndInputAttribute();
 

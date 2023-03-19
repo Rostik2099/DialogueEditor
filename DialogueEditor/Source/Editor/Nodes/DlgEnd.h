@@ -7,6 +7,6 @@ public:
 	DlgEnd();
 	~DlgEnd();
 
-	void Draw(int& nodeID) override;
+	void Draw() override;
 };
 

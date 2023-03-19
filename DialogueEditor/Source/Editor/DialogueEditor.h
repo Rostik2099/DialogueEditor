@@ -19,20 +19,22 @@ public:
 	void Draw();
 	void DestroyNodeSelector();
 	void SpawnNode(NodeType nodeType);
+	void DeleteNodes();
+	void OpenNodeSelector();
 
 private:
 	template<typename Class>
 	void CreateNewNode()
 	{
 		Node* newNode = new Class;
-		newNode->SetStartPos(selector->GetDropPos());
+		newNode->SetParams(selector->GetDropPos(), nextID);
 		nodes.push_back(newNode);
 	};
 
 private:
 	std::vector<Node*> nodes;
 	std::vector<std::pair<int, int>> links;
-
+	int nextID = 0;
 	NodesSelector* selector = nullptr;
 };
 

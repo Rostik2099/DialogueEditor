@@ -1,11 +1,11 @@
 #pragma once
 #include "Editor/Node.h"
 
-class ProgressQuest : public Node
+class GiveQuest : public Node
 {
 public:
-	ProgressQuest();
-	~ProgressQuest();
+	GiveQuest();
+	~GiveQuest();
 
 	void Draw() override;
 

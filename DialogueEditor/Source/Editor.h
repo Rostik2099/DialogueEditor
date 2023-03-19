@@ -9,6 +9,7 @@
 #include "glfw3.h"
 
 #include "Editor/DialogueEditor.h"
+#include "InputManager.h"
 
 class Editor
 {
@@ -19,9 +20,11 @@ public:
 	void CreateWindow(std::string title);
 	bool AppWindowShouldClose();
 	void Draw();
+	DialogueEditor* GetDlgEditor() { return this->editor; };
 
 private:
 	GLFWwindow* appWindow;
 	DialogueEditor* editor;
+	InputManager* inpMng;
 };
 

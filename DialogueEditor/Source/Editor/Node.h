@@ -11,19 +11,33 @@ public:
 	Node() {};
 	~Node() {};
 
-	void SetStartPos(ImVec2 startPos) { this->startPos = startPos; };
+	void SetParams(ImVec2 startPos, int& newID) 
+	{
+		this->startPos = startPos;
+		this->ID = newID;
+		newID += 1 + pins;
+	};
+	int GetID() { return this->ID; };
+	void GetIOid(int& inputID, int& outputID) 
+	{
+		inputID = this->inputID;
+		outputID = this->outputID;
+	};
 
-	virtual	void Draw(int& nodeID) 
+	virtual	void Draw() 
 	{
 		if (justCreated)
 		{
-			ImNodes::SetNodeScreenSpacePos(nodeID, startPos);
+			ImNodes::SetNodeScreenSpacePos(ID, startPos);
 			justCreated = false;
 		}
 	};
 
-private:
+protected:
 	bool justCreated = true;
 	ImVec2 startPos;
+	int inputID = -1, outputID = -1;
+	int ID;
+	int pins = 0;
 };
 

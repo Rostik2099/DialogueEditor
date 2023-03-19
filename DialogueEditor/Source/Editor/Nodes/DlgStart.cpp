@@ -1,17 +1,21 @@
 #include "DlgStart.h"
-DlgStart::DlgStart() {}
 
-void DlgStart::Draw(int& nodeID)
+DlgStart::DlgStart() 
 {
-	Node::Draw(nodeID);
-	ImNodes::BeginNode(nodeID);
+	pins = 1;
+}
+
+void DlgStart::Draw()
+{
+	Node::Draw();
+	ImNodes::BeginNode(ID);
 
 	ImNodes::BeginNodeTitleBar();
 	ImGui::Text("Start");
 	ImNodes::EndNodeTitleBar();
 
-	nodeID++;
-	ImNodes::BeginOutputAttribute(nodeID);
+	outputID = ID + 1;
+	ImNodes::BeginOutputAttribute(outputID);
 	ImGui::Text("Output");
 	ImNodes::EndOutputAttribute();
 

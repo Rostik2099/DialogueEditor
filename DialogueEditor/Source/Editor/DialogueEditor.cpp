@@ -40,6 +40,36 @@ void DialogueEditor::Draw()
 	{
 		this->links.push_back(std::make_pair(startID, endID));
 	}
+
+	int dropID;
+	if (ImNodes::IsLinkDropped(&dropID))
+	{
+		selector = new NodesSelector(this);
+	}
+
+	if (selector)
+	{
+		selector->Draw();
+	}
+}
+
+void DialogueEditor::DestroyNodeSelector()
+{
+	delete selector;
+	selector = nullptr;
+}
+
+void DialogueEditor::SpawnNode(NodeType nodeType)
+{
+	switch (nodeType)
+	{
+	case Start:
+		CreateNewNode<DlgStart>();
+		break;
+	case End:
+		CreateNewNode<DlgEnd>();
+		break;
+	}
 }
 
 DialogueEditor::~DialogueEditor() {}

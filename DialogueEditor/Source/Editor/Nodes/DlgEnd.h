@@ -1,5 +1,5 @@
 #pragma once
-#include "Node.h"
+#include "Editor/Node.h"
 class DlgEnd : public Node
 {
 public:

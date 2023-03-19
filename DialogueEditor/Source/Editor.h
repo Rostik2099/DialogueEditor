@@ -8,7 +8,7 @@
 #include "imgui_impl_opengl3.h"
 #include "glfw3.h"
 
-#include "DialogueEditor.h"
+#include "Editor/DialogueEditor.h"
 
 class Editor
 {

@@ -11,6 +11,6 @@ public:
 	Node() {};
 	~Node() {};
 
-	virtual	void Draw() {};
+	virtual	void Draw(int& nodeID) {};
 };
 

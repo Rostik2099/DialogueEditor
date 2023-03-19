@@ -1,11 +1,12 @@
 #pragma once
+#include <vector>
+
 #include "imnodes.h"
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
-#include "Nodes/DlgStart.h"
-#include "Nodes/DlgEnd.h"
+#include "Node.h"
 
 class DialogueEditor
 {
@@ -16,9 +17,8 @@ public:
 
 	void Draw();
 
-//Temp
 private:
-	DlgStart* dlgStart;
-	DlgEnd* dlgEnd;
+	std::vector<Node*> nodes;
+	std::vector<std::pair<int, int>> links;
 };
 

@@ -81,24 +81,33 @@ void DialogueEditor::DeleteNodes()
 		std::vector<int> nodesToDelete;
 		nodesToDelete.resize(nodesNum);
 		ImNodes::GetSelectedNodes(nodesToDelete.data());
-		for (int i = 0; i < nodes.size(); i++)
+		for (int i = 0; i < nodesToDelete.size(); i++)
 		{
-			for (int n = 0; n < nodesToDelete.size(); n ++)
+			for (int n = 0; n < nodes.size(); n++)
 			{
-				if (nodes[i]->GetID() == nodesToDelete[n])
+				if (nodes[n]->GetID() == nodesToDelete[i])
 				{
-					int inID, outID;
-					nodes[i]->GetIOid(inID, outID);
+					int in, out;
+					nodes[n]->GetIOid(in, out);
 					for (int l = 0; l < links.size(); l++)
 					{
-						if (links[l].first == inID || links[l].first == outID || links[l].second == inID || links[l].second == outID)
+						if (links[l].first == in || links[l].second == in)
 						{
 							links.erase(links.begin() + l, links.begin() + l + 1);
+							break;
 						}
 					}
-					nodesToDelete.erase(nodesToDelete.begin() + n, nodesToDelete.begin() + n + 1);
-					delete nodes[i];
-					nodes.erase(nodes.begin() + i, nodes.begin() + i + 1);
+					for (int l = 0; l < links.size(); l++)
+					{
+						if (links[l].first == out || links[l].second == out)
+						{
+							links.erase(links.begin() + l, links.begin() + l + 1);
+							break;
+						}
+					}
+					delete nodes[n];
+					nodes.erase(nodes.begin() + n, nodes.begin() + n + 1);
+					break;
 				}
 			}
 		}

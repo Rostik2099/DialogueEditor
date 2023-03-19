@@ -3,11 +3,13 @@
 
 Editor* editor;
 void keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods);
+void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods);
 
-InputManager::InputManager(GLFWwindow* window, Editor* edit)
+InputManager::InputManager(GLFWwindow* window, Editor* editr)
 {
 	glfwSetKeyCallback(window, keyCallBack);
-	editor = edit;
+	glfwSetMouseButtonCallback(window, mouseButtonCallback);
+	editor = editr;
 }
 
 void keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -21,3 +23,11 @@ void keyCallBack(GLFWwindow* window, int key, int scancode, int action, int mods
 		editor->GetDlgEditor()->OpenNodeSelector();
 	}
 }
+
+void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
+{
+	if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_RELEASE)
+	{
+		editor->GetDlgEditor()->OpenNodeSelector();
+	}
+}	

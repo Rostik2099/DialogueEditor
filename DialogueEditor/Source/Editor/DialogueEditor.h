@@ -21,6 +21,7 @@ public:
 	void SpawnNode(NodeType nodeType);
 	void DeleteNodes();
 	void OpenNodeSelector();
+	bool HasMouseHover() { return this->isHovered; };
 
 private:
 	template<typename Class>
@@ -36,5 +37,6 @@ private:
 	std::vector<std::pair<int, int>> links;
 	int nextID = 0;
 	NodesSelector* selector = nullptr;
+	bool isHovered;
 };
 

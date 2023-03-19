@@ -24,7 +24,7 @@ void DialogueEditor::Draw()
 	}
 
 	ImNodes::MiniMap(0.2f, ImNodesMiniMapLocation_BottomRight);
-
+	this->isHovered = ImNodes::IsEditorHovered();
 	ImNodes::EndNodeEditor();
 
 	int startID, endID;
@@ -116,7 +116,8 @@ void DialogueEditor::DeleteNodes()
 
 void DialogueEditor::OpenNodeSelector()
 {
-	selector = new NodesSelector(this, ImGui::GetMousePos());
+	if (HasMouseHover())
+		selector = new NodesSelector(this, ImGui::GetMousePos());
 }
 
 DialogueEditor::~DialogueEditor() {}

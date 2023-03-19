@@ -18,6 +18,7 @@ void Editor::CreateWindow(std::string title)
 	glfwMakeContextCurrent(appWindow);
 	glViewport(0, 0, 1600, 900);
 
+	inpMng = new InputManager(appWindow, this);
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImNodes::CreateContext();
@@ -27,7 +28,6 @@ void Editor::CreateWindow(std::string title)
 	ImGui_ImplOpenGL3_Init("#version 330");
 
 	editor = new DialogueEditor;
-	inpMng = new InputManager(appWindow, this);
 }
 
 bool Editor::AppWindowShouldClose()

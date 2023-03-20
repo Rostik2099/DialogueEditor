@@ -22,8 +22,7 @@ public:
 	void SpawnNode(NodeType nodeType, int dropID);
 	void DeleteNodes();
 	void DeleteLink(int linkID);
-	void OpenNodeSelector();
-	void OpenNodeSelector(int dropID);
+	void OpenNodeSelector(int dropID = -1);
 	bool HasMouseHover() { return this->isHovered; };
 	Node* GetNodeByPin(int pinID);
 

@@ -1,12 +1,6 @@
 #include "NodesSelector.h"
 #include "DialogueEditor.h"
 
-NodesSelector::NodesSelector(DialogueEditor* editor, ImVec2 dropPos)
-{
-	this->editor = editor;
-	this->dropPos = dropPos;
-}
-
 NodesSelector::NodesSelector(DialogueEditor* editor, ImVec2 dropPos, int dropID)
 {
 	this->editor = editor;

@@ -129,12 +129,6 @@ void DialogueEditor::DeleteLink(int linkID)
 	}
 }
 
-void DialogueEditor::OpenNodeSelector()
-{
-	if (HasMouseHover())
-		selector = new NodesSelector(this, ImGui::GetMousePos());
-}
-
 void DialogueEditor::OpenNodeSelector(int dropID)
 {
 	if (HasMouseHover())

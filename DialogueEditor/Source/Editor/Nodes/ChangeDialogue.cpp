@@ -20,10 +20,6 @@ void ChangeDialogue::Draw()
 	ImNodes::EndInputAttribute();
 	ImGui::SameLine();
 
-	ImNodes::BeginOutputAttribute(outputID);
-	ImGui::Text("Output");
-	ImNodes::EndOutputAttribute();
-
 	ImGui::SetNextItemWidth(100.f);
 	ImGui::InputText("Dialogue Name", buffer, sizeof(buffer));
 
@@ -32,10 +28,9 @@ void ChangeDialogue::Draw()
 
 void ChangeDialogue::SetParams(ImVec2 pos, int& ID)
 {
-	pins = 2;
+	pins = 1;
 	Node::SetParams(pos, ID);
 	inputID = ID + 1;
-	outputID = ID + 2;
 }
 
 ChangeDialogue::~ChangeDialogue() {}

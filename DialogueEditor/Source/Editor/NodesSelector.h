@@ -22,7 +22,6 @@ class DialogueEditor;
 class NodesSelector
 {
 public:
-	NodesSelector(DialogueEditor* editor, ImVec2 dropPos);
 	NodesSelector(DialogueEditor* editor, ImVec2 dropPos, int dropID);
 	~NodesSelector();
 

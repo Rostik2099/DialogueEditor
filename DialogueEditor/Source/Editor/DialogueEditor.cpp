@@ -33,6 +33,8 @@ void DialogueEditor::Draw()
 	int startID, endID;
 	if (ImNodes::IsLinkCreated(&startID, &endID))
 	{
+		DeleteLink(startID);
+		DeleteLink(endID);
 		this->links.push_back(std::make_pair(startID, endID));
 	}
 
@@ -101,26 +103,27 @@ void DialogueEditor::DeleteNodes()
 				{
 					int in, out;
 					nodes[n]->GetIOid(in, out);
-					for (int l = 0; l < links.size(); l++)
-					{
-						if (links[l].first == in || links[l].second == in)
-						{
-							links.erase(links.begin() + l, links.begin() + l + 1);
-							break;
-						}
-					}
-					for (int l = 0; l < links.size(); l++)
-					{
-						if (links[l].first == out || links[l].second == out)
-						{
-							links.erase(links.begin() + l, links.begin() + l + 1);
-							break;
-						}
-					}
+					DeleteLink(in);
+					DeleteLink(out);
 					delete nodes[n];
 					nodes.erase(nodes.begin() + n, nodes.begin() + n + 1);
 					break;
 				}
+			}
+		}
+	}
+}
+
+void DialogueEditor::DeleteLink(int linkID)
+{
+	if (linkID != -1)
+	{
+		for (int i = 0; i < links.size(); i++)
+		{
+			if (links[i].first == linkID || links[i].second == linkID)
+			{
+				links.erase(links.begin() + i, links.begin() + i + 1);
+				return;
 			}
 		}
 	}

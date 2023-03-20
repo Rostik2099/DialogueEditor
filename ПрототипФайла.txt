@@ -1,0 +1,9 @@
+$DlgName=TestDialogue
+#DlgStart=1
+Pos=20,30
+Out=3
+#DlgEnd=2
+Pos=100,30
+#PrgQuest=3
+Pos=50,30
+Out=2

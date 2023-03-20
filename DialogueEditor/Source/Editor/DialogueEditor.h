@@ -21,6 +21,7 @@ public:
 	void DestroyNodeSelector();
 	void SpawnNode(NodeType nodeType, int dropID);
 	void DeleteNodes();
+	void DeleteLink(int linkID);
 	void OpenNodeSelector();
 	void OpenNodeSelector(int dropID);
 	bool HasMouseHover() { return this->isHovered; };

@@ -10,6 +10,7 @@
 
 #include "Editor/DialogueEditor.h"
 #include "InputManager.h"
+#include "SaveManager.h"
 
 class Editor
 {
@@ -26,5 +27,6 @@ private:
 	GLFWwindow* appWindow;
 	DialogueEditor* editor;
 	InputManager* inpMng;
+	SaveManager* saveMng;
 };
 

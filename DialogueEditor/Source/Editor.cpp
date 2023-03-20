@@ -19,6 +19,8 @@ void Editor::CreateWindow(std::string title)
 	glViewport(0, 0, 1600, 900);
 
 	inpMng = new InputManager(appWindow, this);
+	saveMng = new SaveManager;
+	saveMng->OpenFile("test.txt");
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImNodes::CreateContext();

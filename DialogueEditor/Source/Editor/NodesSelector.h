@@ -49,4 +49,3 @@ private:
 		std::make_pair("Give Money", GiveMny),
 	};
 };
-

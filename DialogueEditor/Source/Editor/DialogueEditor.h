@@ -52,6 +52,8 @@ private:
 		nodes.push_back(newNode);
 	};
 
+	void AutoLink();
+
 private:
 	std::vector<Node*> nodes;
 	std::vector<std::pair<int, int>> links;

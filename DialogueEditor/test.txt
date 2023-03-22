@@ -1,4 +1,4 @@
 $DlgName=TestDialogue
 #DlgStart=(0,30)
-#DlgEnd=(100,30)
-#PrgQuest=(200,30)
+#PrgQuest=(100,30)
+#DlgEnd=(300,30)

@@ -18,12 +18,11 @@ void DlgStart::Draw()
 	ImNodes::EndNode();
 }
 
-void DlgStart::SetParams(ImVec2 pos, int& ID)
+void DlgStart::SetParams(ImVec2 pos, int& newID)
 {
 	pins = 1;
-	Node::SetParams(pos, ID);
-	inputID = ID + 1;
-	outputID = ID + 2;
+	Node::SetParams(pos, newID);
+	outputID = ID + 1;
 }
 
 DlgStart::~DlgStart() {}

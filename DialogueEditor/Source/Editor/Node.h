@@ -1,5 +1,5 @@
 #pragma once
-
+#include <iostream>
 #include "imnodes.h"
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
@@ -28,7 +28,7 @@ public:
 	{
 		if (justCreated)
 		{
-			ImNodes::SetNodeScreenSpacePos(ID, startPos);
+			ImNodes::SetNodeEditorSpacePos(ID, startPos);
 			justCreated = false;
 		}
 	};

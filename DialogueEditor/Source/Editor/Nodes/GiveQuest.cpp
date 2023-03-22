@@ -30,10 +30,10 @@ void GiveQuest::Draw()
 	ImNodes::EndNode();
 }
 
-void GiveQuest::SetParams(ImVec2 pos, int& ID)
+void GiveQuest::SetParams(ImVec2 pos, int& newID)
 {
 	pins = 2;
-	Node::SetParams(pos, ID);
+	Node::SetParams(pos, newID);
 	inputID = ID + 1;
 	outputID = ID + 2;
 }

@@ -26,10 +26,10 @@ void ChangeDialogue::Draw()
 	ImNodes::EndNode();
 }
 
-void ChangeDialogue::SetParams(ImVec2 pos, int& ID)
+void ChangeDialogue::SetParams(ImVec2 pos, int& newID)
 {
 	pins = 1;
-	Node::SetParams(pos, ID);
+	Node::SetParams(pos, newID);
 	inputID = ID + 1;
 }
 

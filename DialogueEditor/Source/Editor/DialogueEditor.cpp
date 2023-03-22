@@ -151,7 +151,19 @@ Node* DialogueEditor::GetNodeByPin(int pinID)
 
 void DialogueEditor::OnFileOpened()
 {
+	AutoLink();
 	//ImNodes::EditorContextResetPanning(ImNodes::GetNodeEditorSpacePos(nodes[0]->GetID()));
+}
+
+void DialogueEditor::AutoLink()
+{
+	for (int i = 0; i < nodes.size() - 1; i++)
+	{
+		int in, out1, out;
+		nodes[i]->GetIOid(in, out);
+		nodes[i+1]->GetIOid(in, out1);
+		links.push_back(std::make_pair(out, in));
+	}
 }
 
 DialogueEditor::~DialogueEditor() {}

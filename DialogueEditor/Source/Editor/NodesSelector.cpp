@@ -32,7 +32,7 @@ void NodesSelector::ShowNodes()
 		if (ImGui::Button(node.first.c_str()))
 		{
 			editor->DeleteLink(dropID);
-			editor->SpawnNode(node.second, dropID);
+			editor->SpawnNode(node.second, GetDropPos() , dropID);
 			editor->DestroyNodeSelector();
 			return;
 		}

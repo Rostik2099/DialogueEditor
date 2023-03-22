@@ -56,33 +56,33 @@ void DialogueEditor::DestroyNodeSelector()
 	selector = nullptr;
 }
 
-void DialogueEditor::SpawnNode(NodeType nodeType, int dropID)
+void DialogueEditor::SpawnNode(NodeType nodeType, ImVec2 pos, int dropID)
 {
 	switch (nodeType)
 	{
 	case Start:
-		CreateNewNode<DlgStart>(dropID);
+		CreateNewNode<DlgStart>(pos, dropID);
 		break;
 	case End:
-		CreateNewNode<DlgEnd>(dropID);
+		CreateNewNode<DlgEnd>(pos, dropID);
 		break;
 	case ProgrQst:
-		CreateNewNode<ProgressQuest>(dropID);
+		CreateNewNode<ProgressQuest>(pos, dropID);
 		break;
 	case GiveQst:
-		CreateNewNode<GiveQuest>(dropID);
+		CreateNewNode<GiveQuest>(pos, dropID);
 		break;
 	case GiveItm:
-		CreateNewNode<GiveItem>(dropID);
+		CreateNewNode<GiveItem>(pos, dropID);
 		break;
 	case NPCAnsw:
-		CreateNewNode<NPCAnswer>(dropID);
+		CreateNewNode<NPCAnswer>(pos, dropID);
 		break;
 	case DlgChange:
-		CreateNewNode<ChangeDialogue>(dropID);
+		CreateNewNode<ChangeDialogue>(pos, dropID);
 		break;
 	case GiveMny:
-		CreateNewNode<GiveMoney>(dropID);
+		CreateNewNode<GiveMoney>(pos, dropID);
 		break;
 	}
 }
@@ -147,6 +147,11 @@ Node* DialogueEditor::GetNodeByPin(int pinID)
 		}
 	}
 	return nullptr;
+}
+
+void DialogueEditor::OnFileOpened()
+{
+	//ImNodes::EditorContextResetPanning(ImNodes::GetNodeEditorSpacePos(nodes[0]->GetID()));
 }
 
 DialogueEditor::~DialogueEditor() {}

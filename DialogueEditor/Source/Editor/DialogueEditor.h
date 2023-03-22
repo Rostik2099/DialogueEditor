@@ -19,19 +19,20 @@ public:
 
 	void Draw();
 	void DestroyNodeSelector();
-	void SpawnNode(NodeType nodeType, int dropID);
+	void SpawnNode(NodeType nodeType, ImVec2 pos, int dropID = -1);
 	void DeleteNodes();
 	void DeleteLink(int linkID);
 	void OpenNodeSelector(int dropID = -1);
 	bool HasMouseHover() { return this->isHovered; };
 	Node* GetNodeByPin(int pinID);
+	void OnFileOpened();
 
 private:
 	template<typename Class>
-	void CreateNewNode(int dropID)
+	void CreateNewNode(ImVec2 nodePos, int dropID = -1)
 	{
 		Node* newNode = new Class;
-		newNode->SetParams(selector->GetDropPos(), nextID);
+		newNode->SetParams(nodePos, nextID);
 		int in, out;
 		newNode->GetIOid(in, out);
 		if (dropID != -1)
@@ -54,7 +55,7 @@ private:
 private:
 	std::vector<Node*> nodes;
 	std::vector<std::pair<int, int>> links;
-	int nextID = 0;
+	int nextID = 1;
 	NodesSelector* selector = nullptr;
 	bool isHovered;
 };

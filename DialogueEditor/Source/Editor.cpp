@@ -19,8 +19,6 @@ void Editor::CreateWindow(std::string title)
 	glViewport(0, 0, 1600, 900);
 
 	inpMng = new InputManager(appWindow, this);
-	saveMng = new SaveManager;
-	saveMng->OpenFile("test.txt");
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
 	ImNodes::CreateContext();
@@ -30,6 +28,8 @@ void Editor::CreateWindow(std::string title)
 	ImGui_ImplOpenGL3_Init("#version 330");
 
 	editor = new DialogueEditor;
+	saveMng = new SaveManager(this);
+	saveMng->OpenFile("test.txt");
 }
 
 bool Editor::AppWindowShouldClose()

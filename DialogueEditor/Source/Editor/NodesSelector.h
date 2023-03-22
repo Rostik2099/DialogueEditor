@@ -1,22 +1,11 @@
 #pragma once
 #include<iostream>
 #include<vector>
+#include "NodesList.h"
 
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
-
-enum NodeType
-{
-	Start,
-	End,
-	ProgrQst,
-	GiveQst,
-	GiveItm,
-	NPCAnsw,
-	DlgChange,
-	GiveMny,
-};
 
 class DialogueEditor;
 class NodesSelector

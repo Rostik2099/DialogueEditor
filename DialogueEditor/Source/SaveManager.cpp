@@ -7,6 +7,7 @@ void SaveManager::OpenFile(std::string path)
 	inf.open(path);
 	if (inf.is_open())
 	{
+		editor->GetDlgEditor()->Clear();
 		while (!inf.eof())
 		{
 			std::string str;

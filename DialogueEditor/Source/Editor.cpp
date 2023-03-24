@@ -29,7 +29,6 @@ void Editor::CreateWindow(std::string title)
 
 	editor = new DialogueEditor;
 	saveMng = new SaveManager(this);
-	saveMng->OpenFile("test.txt");
 }
 
 bool Editor::AppWindowShouldClose()

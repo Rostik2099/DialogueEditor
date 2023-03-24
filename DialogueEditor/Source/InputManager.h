@@ -7,5 +7,8 @@ class InputManager
 public:
 	InputManager(GLFWwindow* window, Editor* editor);
 	~InputManager() {};
+
+public:
+	bool controlPressed = false;
 };
 

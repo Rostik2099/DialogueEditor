@@ -1,0 +1,4 @@
+$DlgName=Test2Dialogue
+#DlgStart=(0,30)
+#GiveMny=(100,30)
+#DlgEnd=(300,30)

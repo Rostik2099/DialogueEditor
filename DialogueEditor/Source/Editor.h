@@ -22,6 +22,7 @@ public:
 	bool AppWindowShouldClose();
 	void Draw();
 	DialogueEditor* GetDlgEditor() { return this->editor; };
+	SaveManager* GetSaveMngr() { return this->saveMng; };
 
 private:
 	GLFWwindow* appWindow;

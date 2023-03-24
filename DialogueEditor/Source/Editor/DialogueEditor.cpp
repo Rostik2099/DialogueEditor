@@ -155,6 +155,17 @@ void DialogueEditor::OnFileOpened()
 	//ImNodes::EditorContextResetPanning(ImNodes::GetNodeEditorSpacePos(nodes[0]->GetID()));
 }
 
+void DialogueEditor::Clear()
+{
+	for (auto node : nodes)
+	{
+		delete node;
+	}
+	DestroyNodeSelector();
+	nodes.clear();
+	links.clear();
+}
+
 void DialogueEditor::AutoLink()
 {
 	for (int i = 0; i < nodes.size() - 1; i++)

@@ -25,6 +25,7 @@ private:
 		{"DlgStart", Start},
 		{"DlgEnd", End},
 		{"PrgQuest", ProgrQst},
+		{"GiveMny", GiveMny},
 	};
 };
 

@@ -26,6 +26,7 @@ public:
 	bool HasMouseHover() { return this->isHovered; };
 	Node* GetNodeByPin(int pinID);
 	void OnFileOpened();
+	void Clear();
 
 private:
 	template<typename Class>

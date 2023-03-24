@@ -23,6 +23,7 @@ void Editor::CreateWindow(std::string title)
 	ImGui::CreateContext();
 	ImNodes::CreateContext();
 	ImGuiIO& igIO = ImGui::GetIO(); (void)igIO;
+	igIO.Fonts->AddFontFromFileTTF("Fonts/arial.ttf", 15, NULL, igIO.Fonts->GetGlyphRangesCyrillic());
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(appWindow, true);
 	ImGui_ImplOpenGL3_Init("#version 330");

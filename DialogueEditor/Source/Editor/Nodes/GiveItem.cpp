@@ -26,7 +26,7 @@ void GiveItem::Draw()
 	ImNodes::EndOutputAttribute();
 
 	ImGui::SetNextItemWidth(100.f);
-	ImGui::InputText("Item ID", idBuffer, sizeof(idBuffer));
+	ImGui::InputText("Item ID", ("u8%s", idBuffer), sizeof(idBuffer));
 
 	ImGui::SetNextItemWidth(100.f);
 	ImGui::InputText("Quantity", quantBuffer, sizeof(quantBuffer));
